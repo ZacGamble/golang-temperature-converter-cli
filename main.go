@@ -26,10 +26,27 @@ func main() {
 
 	for {
 		fmt.Print("What is the current temperature in " + originUnit + " ? ")
+		// Is this next line returning two values?
+		_, err = fmt.Scanln(originValue)
+
+		if err != nil {
+			printError(errReadingInput)
+		}
+
+		if originUnit == "C" {
+			convertToFahrenheit(originValue)
+		} else {
+			convertToCelsius(originValue)
+		}
 
 		fmt.Print("Would you like to convert another temperature ? (y/n) ")
+		_, err = fmt.Scanln(shouldConvertAgain)
 
-		if shouldConvertAgain != "Y" {
+		if err != nil {
+			printError(errReadingInput)
+		}
+
+		if strings.ToUpper(shouldConvertAgain) != "Y" {
 			fmt.Println("Good bye!")
 			break
 		}
