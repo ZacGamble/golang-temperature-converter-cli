@@ -27,7 +27,7 @@ func main() {
 	for {
 		fmt.Print("What is the current temperature in " + originUnit + " ? ")
 		// Is this next line returning two values?
-		_, err = fmt.Scanln(originValue)
+		_, err := fmt.Scanln(&originValue)
 
 		if err != nil {
 			printError(errReadingInput)
